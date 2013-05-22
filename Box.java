@@ -17,8 +17,18 @@ public class Box {
     }
 
     static ArrayList<Integer> nexts(int digits, int roll) {
+        int t = 0;
+        int digitBound = 0;
+        for (int i = 1; i <= 9; i++) {
+            if ((digits & bit(i)) > 0) {
+                if (t + i > roll)
+                    break;
+                digitBound++;
+                t += i;
+            }
+        }
         ArrayList<Integer> result = new ArrayList<Integer>();
-        for (int i = 1; i <= 4; i++)
+        for (int i = 1; i <= digitBound; i++)
             appendNexts(result, digits, roll, 0, i, 1);
         return result;
     }
