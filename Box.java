@@ -18,7 +18,7 @@ public class Box {
 
     static ArrayList<Integer> nexts(int digits, int roll) {
         ArrayList<Integer> result = new ArrayList<Integer>();
-        for (int i = 1; i <= 9; i++)
+        for (int i = 1; i <= 4; i++)
             appendNexts(result, digits, roll, 0, i, 1);
         return result;
     }
@@ -30,7 +30,7 @@ public class Box {
                 a.add(cur | bit(roll));
             return;
         }
-        for (int i = start; i < 9; i++) {
+        for (int i = start; i < 9 && i < roll; i++) {
             if ((digits & ~cur & bit(i)) == 0)
                 continue;
             appendNexts(a, digits,
